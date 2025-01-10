@@ -1,0 +1,56 @@
+<html>
+<head>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<title>Metasploit screenshare - 45.177.77.120</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script language="javascript">
+function updateStatus(msg) {
+  var status = document.getElementById("status");
+  status.innerText = msg;
+}
+
+function noImage() {
+  document.getElementById("streamer").style = "display:none";
+  updateStatus("Waiting");
+}
+
+function updateFrame() {
+  $.ajax({
+    url: 'CQadiOHE.jpeg', // ou o endpoint que retorna a imagem
+    type: 'GET',
+    cache: false,
+    success: function(data) {
+      var img = document.getElementById("streamer");
+      img.src = 'data:image/jpeg;base64,' + btoa(data);
+      img.style = "display:";
+      updateStatus("Playing");
+    },
+    error: function() {
+      noImage();
+    }
+  });
+}
+
+// Defina um intervalo para buscar novos frames a cada 100 ms (ajustável conforme necessário)
+setInterval(function() {
+  updateFrame();
+}, 100);
+
+</script>
+</head>
+<body>
+<noscript>
+  <h2><font color="red">Error: You need Javascript enabled to watch the stream.</font></h2>
+</noscript>
+<pre>
+Target IP  : 45.177.77.120
+Start time : 2025-01-10 03:16:19 +0000
+Status     : <span id="status"></span>
+</pre>
+<br>
+<img onerror="noImage()" id="streamer">
+<br><br>
+<a href="http://www.metasploit.com" target="_blank">www.metasploit.com</a>
+</body>
+</html>
